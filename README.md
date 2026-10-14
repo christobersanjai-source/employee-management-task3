@@ -20,13 +20,29 @@ FastAPI CRUD APIs for an employee directory with validation, pagination, departm
 Compose starts PostgreSQL service named `db`, waits for its health check, runs `alembic upgrade head`, then starts the API. Run `docker compose down` only when you intentionally want to stop this stack; the named database volume is retained unless explicitly removed.
 
 ## Run tests
-Create/activate a virtual environment, install dependencies, then run:
+## Run tests
+
+Create and activate a virtual environment, then install dependencies.
+
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
+```
+
+Run the test suite:
+
+```powershell
 python -m pytest -q
 ```
-Tests use an isolated in-memory SQLite database and do not require Docker/PostgreSQL.
 
+Expected result:
+
+```text
+10 passed
+```
+
+Tests use an isolated in-memory SQLite database and do not require Docker or PostgreSQL.
 ## Example requests
 ```powershell
 Invoke-RestMethod http://localhost:8000/health
